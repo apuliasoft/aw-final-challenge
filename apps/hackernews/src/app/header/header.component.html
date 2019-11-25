@@ -1,0 +1,18 @@
+<mat-toolbar color="primary" class="toolbar">
+	<mat-toolbar-row>
+		<h1>Hacker News</h1>
+		<span class="menu-spacer"></span>
+		<mat-slide-toggle (change)="changeHandler($event)"></mat-slide-toggle>
+	</mat-toolbar-row>
+	<mat-toolbar-row>
+		<nav mat-tab-nav-bar color="accent">
+			<a mat-tab-link [routerLink]="['/new']" routerLinkActive #new="routerLinkActive" [active]="new.isActive">
+				NEW
+			</a>
+			<a mat-tab-link [routerLink]="['/create']" routerLinkActive #submit="routerLinkActive"
+				[active]="submit.isActive">
+				SUBMIT
+			</a>
+		</nav>
+	</mat-toolbar-row>
+</mat-toolbar>

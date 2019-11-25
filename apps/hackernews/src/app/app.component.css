@@ -1,0 +1,9 @@
+.container {
+  padding: 148px 20px 20px 20px;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.dark-mode {
+  background-color: #333333;
+}

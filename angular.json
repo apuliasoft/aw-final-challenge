@@ -1,0 +1,167 @@
+{
+  "version": 1,
+  "projects": {
+    "hackernews": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "apps/hackernews",
+      "sourceRoot": "apps/hackernews/src",
+      "prefix": "hn",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/hackernews",
+            "index": "apps/hackernews/src/index.html",
+            "main": "apps/hackernews/src/main.ts",
+            "polyfills": "apps/hackernews/src/polyfills.ts",
+            "tsConfig": "apps/hackernews/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "apps/hackernews/src/favicon.ico",
+              "apps/hackernews/src/assets"
+            ],
+            "styles": [
+              "apps/hackernews/src/theme.scss",
+              "apps/hackernews/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/hackernews/src/environments/environment.ts",
+                  "with": "apps/hackernews/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "hackernews:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "hackernews:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "hackernews:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/hackernews/tsconfig.app.json",
+              "apps/hackernews/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/hackernews/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/hackernews/jest.config.js",
+            "tsConfig": "apps/hackernews/tsconfig.spec.json",
+            "setupFile": "apps/hackernews/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "hackernews-e2e": {
+      "root": "apps/hackernews-e2e",
+      "sourceRoot": "apps/hackernews-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/hackernews-e2e/cypress.json",
+            "tsConfig": "apps/hackernews-e2e/tsconfig.e2e.json",
+            "devServerTarget": "hackernews:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "hackernews:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["apps/hackernews-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/hackernews-e2e/**"]
+          }
+        }
+      }
+    },
+    "hackernews-data": {
+      "projectType": "library",
+      "root": "libs/hackernews-data",
+      "sourceRoot": "libs/hackernews-data/src",
+      "prefix": "hn",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/hackernews-data/tsconfig.lib.json",
+              "libs/hackernews-data/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/hackernews-data/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/hackernews-data/jest.config.js",
+            "tsConfig": "libs/hackernews-data/tsconfig.spec.json",
+            "setupFile": "libs/hackernews-data/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {}
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "hackernews"
+}

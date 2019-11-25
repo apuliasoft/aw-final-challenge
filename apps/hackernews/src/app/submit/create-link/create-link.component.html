@@ -1,0 +1,29 @@
+<form @fadeIn (ngSubmit)="createLink()" novalidate [formGroup]="linkForm">
+	<div>
+		<mat-form-field>
+			<input matInput name="description" type="text" placeholder="A description for the link" formControlName="description"/>
+			<mat-hint *ngIf="linkForm.controls.description.errors?.required && linkForm.controls.description.touched">
+				Description is required
+			</mat-hint>
+			<mat-hint *ngIf="linkForm.controls.description.errors?.minlength && linkForm.controls.description.touched">
+				Description is too short
+			</mat-hint>
+			<mat-hint
+				*ngIf="linkForm.controls.description.errors?.notDescrizione && linkForm.controls.description.touched">
+				Description cannot contain "descrizione"
+			</mat-hint>
+		</mat-form-field>
+	</div>
+	<div>
+		<mat-form-field>
+			<input matInput name="url" type="text" placeholder="The URL for the link" formControlName="url"/>
+			<mat-hint *ngIf="linkForm.controls.url.errors?.required && linkForm.controls.url.touched">
+				URL is required
+			</mat-hint>
+			<mat-hint *ngIf="linkForm.controls.url.errors?.pattern && linkForm.controls.url.touched">
+				URL is not formatted properly
+			</mat-hint>
+		</mat-form-field>
+	</div>
+	<button mat-raised-button color="accent" [disabled]="!linkForm.valid">Submit</button>
+</form>

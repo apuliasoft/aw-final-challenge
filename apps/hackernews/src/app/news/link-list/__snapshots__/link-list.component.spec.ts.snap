@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinkListComponent should render links list 1`] = `
+<hn-link-list
+  links$={[Function Observable]}
+  newsFacade={[Function Object]}
+  page={[Function Number]}
+  route={[Function ActivatedRoute]}
+  scroll$={[Function Observable]}
+>
+  <div
+    class="ng-tns-c1-0 ng-trigger ng-trigger-fadeIn ng-star-inserted"
+    style=""
+  >
+    
+    <div
+      class="special-dark-theme ng-tns-c1-0 ng-star-inserted"
+      style=""
+    >
+      <mat-card
+        class="card"
+      >
+        <mat-card-header
+          class="ng-tns-c1-0"
+        >
+          <mat-card-title
+            class="ng-tns-c1-0"
+          >
+             Best search engine, ever 
+          </mat-card-title>
+          <mat-card-subtitle
+            class="ng-tns-c1-0"
+          >
+             www.google.com (a few seconds) 
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions
+          class="ng-tns-c1-0"
+        >
+          <button
+            class="ng-tns-c1-0"
+            color="primary"
+            mat-raised-button=""
+            matbadgecolor="accent"
+            matbadgeposition="before"
+          >
+             UPVOTE 
+          </button>
+          <a
+            class="ng-tns-c1-0"
+            color="accent"
+            href="https://www.google.com"
+            mat-raised-button=""
+            target="new"
+          >
+             GO TO LINK 
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div><a
+    class="more ng-trigger ng-trigger-scroll"
+    color="accent"
+    href="/new?p=2"
+    mat-fab=""
+    ng-reflect-query-params="[object Object]"
+    ng-reflect-router-link="/new"
+    style=""
+  >
+    More
+  </a>
+</hn-link-list>
+`;

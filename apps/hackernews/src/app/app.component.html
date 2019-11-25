@@ -1,0 +1,6 @@
+<div [class.dark-mode]="isDark">
+  <hn-header (darkModeChange)="isDark = $event"></hn-header>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>  
+</div>
